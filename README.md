@@ -39,5 +39,4 @@ const PetKey = {
 	Tag:"tag",
 	} as const;
 export type PetKey = typeof PetKey[keyof typeof PetKey]
-
 ```
