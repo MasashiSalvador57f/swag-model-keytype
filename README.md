@@ -7,6 +7,34 @@
 
 ### How to use
 
+Install
+```
+go install github.com/MasashiSalvador57f/swag-model-keytype
+# or 
+# get latest binary from https://github.com/MasashiSalvador57f/swag-model-keytype/releases
 ```
 
+Generate Key Type
+```
+swag-model-keytype -f <your swagger file path> -o <output file name>
+```
+
+### example
+
+```
+swag-model-keytype -f sample/swagger.yaml -o KeyTypes.ts
+```
+
+```typescript
+const ErrorKey = {
+	Code:"code",
+	Message:"message",
+} as const;
+export type ErrorKey = typeof ErrorKey[keyof typeof ErrorKey]
+
+const PetKey = {
+	Tag:"tag",
+	Id:"id",
+	Name:"name",
+} as const;
 ```
