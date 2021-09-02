@@ -18,13 +18,13 @@ var (
 )
 
 const keyTypeTemplate = `
-{{- $typeName := .TypeName }}
-const {{ $typeName }} = {
+{{- $typeMapeName := .KeyMapName }}
+export const {{ $typeMapeName }} = {
 	{{ range $i := .Properties -}}
 	{{ .Ref }}:"{{ .KeyName -}}",
 	{{ end -}}
 } as const;
-export type {{ $typeName }} = typeof {{ $typeName }}[keyof typeof {{ $typeName -}}]
+export type {{ .TypeName }} = typeof {{ $typeMapeName }}[keyof typeof {{ $typeMapeName -}}]
 `
 
 // Property is definition model property.
@@ -35,6 +35,7 @@ type Property struct {
 
 // Model represens model with  Title & Properties for swager definition.
 type Model struct {
+	KeyMapName string
 	TypeName   string
 	Properties []Property
 }
@@ -65,6 +66,7 @@ func main() {
 			continue
 		}
 		m := Model{
+			KeyMapName: fmt.Sprintf("%sKeys", title),
 			TypeName:   fmt.Sprintf("%sKey", title),
 			Properties: []Property{},
 		}
