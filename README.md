@@ -26,15 +26,18 @@ swag-model-keytype -f sample/swagger.yaml -o KeyTypes.ts
 ```
 
 ```typescript
+// auto generated file DO NOT EDIT.
 const ErrorKey = {
 	Code:"code",
 	Message:"message",
-} as const;
+	} as const;
 export type ErrorKey = typeof ErrorKey[keyof typeof ErrorKey]
 
 const PetKey = {
-	Tag:"tag",
 	Id:"id",
 	Name:"name",
-} as const;
+	Tag:"tag",
+	} as const;
+export type PetKey = typeof PetKey[keyof typeof PetKey]
+
 ```
